@@ -11,7 +11,7 @@ const onRefresh = () => {
   }, 1000);
 };
 
-const active = ref(0)
+const active = ref(0);
 </script>
 
 <template>
@@ -42,11 +42,10 @@ const active = ref(0)
 </template>
 
 <style lang="scss" scoped>
-::v-deep(.van-tabbar){
-  background: #1A212A;
+::v-deep(.van-tabbar) {
+  background: #303841;
 }
-::v-deep(.van-tabbar-item){
-  background: #1A212A;
+::v-deep(.van-tabbar-item) {
+  background: #303841;
 }
-
 </style>
