@@ -29,21 +29,56 @@
       </div>
     </div>
     <div class="assets">
-        <div>
-            <span>BTC/USDT</span>
-            <span>23474.58</span>
-            <span>0.61%</span>            
+      <div>
+        <span>BTC/USDT</span>
+        <span>23474.58</span>
+        <span>0.61%</span>
+      </div>
+      <div>
+        <span>BTC/USDT</span>
+        <span>23474.15</span>
+        <span>0.61%</span>
+      </div>
+      <div>
+        <span>BTC/USDT</span>
+        <span>23474.15</span>
+        <span>0.61%</span>
+      </div>
+    </div>
+    <div class="buy">
+      <div class="left">
+        <span>快捷买币</span>
+        <p>支持USDT、BTC等</p>
+        <img src="http://localhost:5173/img_2.png" alt="" />
+      </div>
+      <div class="right">
+        <div class="buy_top">
+          <span>快捷买币</span>
+          <img src="http://localhost:5173/yhk.png" alt="" />
         </div>
-        <div>
-            <span>BTC/USDT</span>
-            <span>23474.15</span>
-            <span>0.61%</span>            
+        <div class="buy_bottom">
+          <span>锁仓挖矿</span>
+          <img src="http://localhost:5173/tz.png" alt="" />
         </div>
+      </div>
+    </div>
+    <div class="type">
+      <h3>交易列表</h3>
+      <div class="title">
+        <span>交易种类</span>
+        <span>最新价</span>
+        <span>涨跌幅</span>
+      </div>
+      <div class="list">
         <div>
-            <span>BTC/USDT</span>
-            <span>23474.15</span>
-            <span>0.61%</span>            
+          <span>BTC</span>
+          <p>/USDT</p>
         </div>
+        <div><span>34216.16</span></div>
+        <div>
+          <button>+15.35%</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -77,19 +112,85 @@
       margin: 10px 0px;
     }
   }
-  .assets{
+  .assets {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 5px 0px;
-    div{
+    background: #3d84a8;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    div {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      padding: 10px 15px;
+      span {
+        margin: 2px 0px;
+      }
+    }
+  }
+  .buy {
+    width: auto;
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    .left {
+      width: 60%;
+      height: auto;
+      padding: 15px;
+      background: #3d84a8;
+      box-sizing: border-box;
+      border-radius: 3px;
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      span {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      p {
+        font-size: 14px;
+      }
+      img {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        top: 25px;
+        right: 25px;
+      }
+    }
+    .right {
+      width: 35%;
+      height: 140px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      div {
+        height: 45%;
+        background: #3d84a8;
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 3px;
         display: flex;
         justify-content: space-around;
-        flex-direction: column;
         align-items: center;
-        font-size: 14px;
-        span{
-            margin: 2px 0px;
+        font-size: 13px;
+        img {
+          width: 25px;
+          height: 25px;
         }
+      }
+    }
+  }
+  .type {
+    h3 {
+      margin: 20px 0px;
+      border-left: 5px solid #30e3ca;
+      padding-left: 10px;
     }
   }
 }
