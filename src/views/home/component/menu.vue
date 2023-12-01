@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
 
 const list = ref([
     {
         title:"身份认证",
         icon:"verified_user",
-        path:""
+        path:"/security"
     },
     {
         title:"账户中心",
@@ -38,6 +41,10 @@ const list = ref([
         path:""
     },
 ])
+
+const goTab = (item) =>{
+  router.push(item.path)
+}
 </script>
 
 <template>
@@ -66,7 +73,7 @@ const list = ref([
       </div>
     </div>
     <div class="list">
-      <div v-for="(item,index) in list" :key="index">
+      <div v-for="(item,index) in list" :key="index" @click="goTab(item)">
         <span class="material-symbols-outlined" style="font-size: 22px;"> {{item.icon}} </span>
         <span>{{item.title}}</span>
       </div>

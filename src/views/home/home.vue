@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import { getPrice } from "@/api/okx.js";
 import i18n from "@/lang/index.js"
-import Menu from "./component/menu.vue";
+import Menu from "@/views/home/component/menu.vue";
 
 const tradeList = ref([
   {

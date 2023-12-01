@@ -42,6 +42,10 @@ const router = createRouter({
           component:()=>import("@/views/wallet/wallet.vue")
         }
       ])
+    },
+    {
+      path:"/security",
+      component:()=>import("@/views/security/security.vue")
     }
 
   ]
