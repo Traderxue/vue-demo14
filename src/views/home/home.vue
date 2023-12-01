@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import { getPrice, getBalance } from "@/api/okx.js";
+import { getPrice } from "@/api/okx.js";
+import i18n from "@/lang/index.js"
 
 const tradeList = ref([
   {
@@ -35,6 +36,26 @@ const tradeList = ref([
   },
 ]);
 
+const showLeft = ref(false);
+const showTop = ref(false);
+
+const currentLang = ref("zh")
+
+const lang = ref([
+  {
+    title:"简体中文",
+    lang:"zh"
+  },
+  {
+    title:"繁体中文",
+    lang:"zh_hk"
+  },
+  {
+    title:"English",
+    lang:"en"
+  }
+])
+
 const getData = () => {
   tradeList.value.forEach(async (item) => {
     const { data: res } = await getPrice(item.type);
@@ -43,10 +64,19 @@ const getData = () => {
   });
 };
 
-const getbal = async () => {
-  const { data: res } = await getBalance();
-  console.log(res);
+const showPerson = () => {
+  showLeft.value = true;
 };
+
+const showLang = () => {
+  showTop.value = true;
+};
+
+const changLang = (item) =>{
+  currentLang.value = item.lang  
+  showTop.value = false
+  i18n.global.locale = item.lang;
+}
 
 onMounted(() => {
   getData();
@@ -57,9 +87,34 @@ onMounted(() => {
   <div class="home">
     <div class="top">
       <div class="header">
-        <span class="material-symbols-outlined"> person </span>
-        <span>首页</span>
-        <span class="material-symbols-outlined"> language </span>
+        <span class="material-symbols-outlined" @click="showPerson">
+          person
+        </span>
+        <!-- 左侧弹出 -->
+        <van-popup
+          v-model:show="showLeft"
+          position="left"
+          :style="{ width: '65%', height: '100%' }"
+        >
+          <div class="showLeft">123</div>
+        </van-popup>
+        <span>{{$t("home.title")}}</span>
+        <span class="material-symbols-outlined" @click="showLang">
+          language
+        </span>
+        <!-- 顶部弹出 -->
+        <van-popup
+          v-model:show="showTop"
+          position="top"
+          :style="{ height: '30%' }"
+        >
+          <div class="showTop">
+            <div v-for="(item,index) in lang" :key="index" @click="changLang(item)">
+              <span>{{item.title}}</span>
+              <span class="material-symbols-outlined" v-if="(item.lang==currentLang)"> check </span>
+            </div>
+          </div>
+        </van-popup>
       </div>
       <div class="banner">
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
@@ -157,6 +212,25 @@ onMounted(() => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      .van-popup {
+        background: #2d4059;
+        color: #fff;
+        padding: 15px;
+        .showTop{
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0px;
+            padding: 5px 10px;
+            color: #3ec1d3;
+            font-size: 15px;
+          }
+        }
+      }
     }
     .banner {
       width: auto;

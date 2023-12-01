@@ -98,7 +98,7 @@ const sell = () => {
     </div>
     <div class="position">
       <div class="top">
-        <span>当前持仓</span>
+        <span style="font-weight: 600;font-size: 15px;">当前持仓</span>
         <div>
           <span class="material-symbols-outlined"> segment </span>
           <span>全部</span>
