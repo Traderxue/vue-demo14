@@ -24,6 +24,9 @@ const goTab = (item) => {
 
 <template>
   <div class="quote">
+    <div class="title">
+      <span>行情</span>
+    </div>
     <div class="header">
       <span
         v-for="(item, index) in titleList"
@@ -44,6 +47,9 @@ const goTab = (item) => {
   padding: 15px;
   color: #fff;
   background: #2d4059;
+  .title{
+    text-align: center;
+  }
   .header {
     display: flex;
     justify-content: space-around;

@@ -38,6 +38,24 @@ const dataList = ref([
     parcent: "1.12",
     up: 1,
   },
+  {
+    type: "DOGE",
+    price: "3464",
+    parcent: "1.12",
+    up: 0,
+  },
+  {
+    type: "BTC",
+    price: "3464",
+    parcent: "1.12",
+    up: 1,
+  },
+  {
+    type: "BTC",
+    price: "3464",
+    parcent: "1.12",
+    up: 1,
+  },
 ]);
 </script>
 
