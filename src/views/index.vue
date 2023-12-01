@@ -42,6 +42,7 @@ const active = ref(0);
 </template>
 
 <style lang="scss" scoped>
+
 ::v-deep(.van-tabbar) {
   background: #303841;
 }
