@@ -89,7 +89,7 @@ const sell = () => {
           <input type="text" placeholder="0.000" />
         </div>
         <div class="btn1">
-          <p>可用0.0000</p>
+          <p>可用0.0000 USDT</p>
           <button :class="active == 'buy' ? 'buy' : 'sell'">
             {{ active_btn }}
           </button>
@@ -162,7 +162,7 @@ const sell = () => {
         justify-content: space-between;
         button {
           width: 70px;
-          height: 30px;
+          height: 35px;
           font-size: 14px;
           border: 0;
           border-radius: 2px;

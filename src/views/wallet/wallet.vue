@@ -148,10 +148,9 @@ const coinList = ref([
     flex-direction: column;
     .list {
       padding: 15px;
-      border-radius: 4px;
       margin: 5px 0px;
       font-size: 15px;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid #f5f5f5;
       div {
         padding: 5px 0px;
         display: flex;

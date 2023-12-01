@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { getPrice } from "@/api/okx.js";
 import i18n from "@/lang/index.js"
+import Menu from "./component/menu.vue";
 
 const tradeList = ref([
   {
@@ -96,7 +97,9 @@ onMounted(() => {
           position="left"
           :style="{ width: '65%', height: '100%' }"
         >
-          <div class="showLeft">123</div>
+          <div class="showLeft">
+            <Menu/>
+          </div>
         </van-popup>
         <span>{{$t("home.title")}}</span>
         <span class="material-symbols-outlined" @click="showLang">
