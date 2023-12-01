@@ -13,12 +13,12 @@ const list = ref([
     {
         title:"账户中心",
         icon:"lock",
-        path:""
+        path:"/wallet"
     },
     {
         title:"设置中心",
         icon:"settings",
-        path:""
+        path:"/setting"
     },
     {
         title:"收款方式",

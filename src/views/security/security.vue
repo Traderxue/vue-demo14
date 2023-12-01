@@ -82,7 +82,7 @@ const goBack = () =>{
             border: 0;
             background: #fce38a;
             color: #000;
-            font-size: 14px;
+            font-size: 13px;
         }
     }
   }
