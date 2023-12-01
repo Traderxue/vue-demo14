@@ -1,48 +1,56 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import {getPrice} from "@/api/okx.js"
+import { getPrice, getBalance } from "@/api/okx.js";
 
 const tradeList = ref([
   {
-    type:"BTC",
-    price:"",
-    parcent:"",
-    up:0
+    type: "BTC",
+    price: "",
+    parcent: "1.4",
+    up: 1,
   },
   {
-    type:"ETH",
-    price:"",
-    parcent:"",
-    up:0
+    type: "ETH",
+    price: "",
+    parcent: "2.2",
+    up: 1,
   },
   {
-    type:"SOL",
-    price:"",
-    parcent:"",
-    up:0
+    type: "SOL",
+    price: "",
+    parcent: "1.8",
+    up: 0,
   },
   {
-    type:"APE",
-    price:"",
-    parcent:"",
-    up:0
+    type: "APE",
+    price: "",
+    parcent: "6.2",
+    up: 1,
   },
   {
-    type:"DOGE",
-    price:"",
-    parcent:"",
-    up:0
+    type: "DOGE",
+    price: "",
+    parcent: "4.3",
+    up: 0,
   },
-])
+]);
 
-const getData = async ()=>{
-  const {data:res} = await getPrice()
-  console.log(res)
-}
+const getData = () => {
+  tradeList.value.forEach(async (item) => {
+    const { data: res } = await getPrice(item.type);
+    item.price = res.data[0].markPx;
+    console.log(res);
+  });
+};
 
-onMounted(()=>{
-  getData()
-})
+const getbal = async () => {
+  const { data: res } = await getBalance();
+  console.log(res);
+};
+
+onMounted(() => {
+  getData();
+});
 </script>
 
 <template>
@@ -113,17 +121,21 @@ onMounted(()=>{
       <h3>交易列表</h3>
       <div class="title">
         <span>交易种类</span>
-        <span style="text-align: center;">最新价</span>
-        <span style="text-align: right;">涨跌幅</span>
+        <span style="text-align: center">最新价</span>
+        <span style="text-align: right">涨跌幅</span>
       </div>
-      <div class="list">
-        <div style="display: flex;">
-          <span>BTC</span>
+      <div class="list" v-for="(item, index) in tradeList" :key="index">
+        <div style="display: flex">
+          <span>{{ item.type }}</span>
           <p>/USDT</p>
         </div>
-        <div style="text-align: center;"><span>34216.16</span></div>
-        <div style="text-align: right;">
-          <button class="up">+15.35%</button>
+        <div style="text-align: center; font-weight: 600">
+          <span :class="item.up == 1 ? 'up' : 'down'">{{ item.price }}</span>
+        </div>
+        <div style="text-align: right">
+          <button :class="item.up == 1 ? 'up_btn' : 'down_btn'">
+            {{ item.parcent }}%
+          </button>
         </div>
       </div>
     </div>
@@ -137,6 +149,7 @@ onMounted(()=>{
   padding: 15px;
   color: #fff;
   background: #2d4059;
+  padding-bottom: 60px;
   .top {
     width: auto;
     height: auto;
@@ -239,33 +252,39 @@ onMounted(()=>{
       border-left: 5px solid #30e3ca;
       padding-left: 10px;
     }
-    .title{
+    .title {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 13px;
-      span{
+      span {
         width: 33%;
       }
     }
-    .list{
+    .list {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 14px;
-      padding: 10px 0px ;
-      div{
+      padding: 10px 0px;
+      div {
         width: 33%;
-        button{
+        button {
           width: 70px;
           height: 30px;
           border: 0;
           border-radius: 2px;
         }
-        .up{
+        .up {
+          color: #11999e;
+        }
+        .down {
+          color: #e23e57;
+        }
+        .up_btn {
           background: #11999e;
         }
-        .down{
+        .down_btn {
           background: #e23e57;
         }
       }
