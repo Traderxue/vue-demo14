@@ -1,3 +1,50 @@
+<script setup>
+import { onMounted, ref } from "vue";
+import {getPrice} from "@/api/okx.js"
+
+const tradeList = ref([
+  {
+    type:"BTC",
+    price:"",
+    parcent:"",
+    up:0
+  },
+  {
+    type:"ETH",
+    price:"",
+    parcent:"",
+    up:0
+  },
+  {
+    type:"SOL",
+    price:"",
+    parcent:"",
+    up:0
+  },
+  {
+    type:"APE",
+    price:"",
+    parcent:"",
+    up:0
+  },
+  {
+    type:"DOGE",
+    price:"",
+    parcent:"",
+    up:0
+  },
+])
+
+const getData = async ()=>{
+  const {data:res} = await getPrice()
+  console.log(res)
+}
+
+onMounted(()=>{
+  getData()
+})
+</script>
+
 <template>
   <div class="home">
     <div class="top">
@@ -66,17 +113,17 @@
       <h3>交易列表</h3>
       <div class="title">
         <span>交易种类</span>
-        <span>最新价</span>
-        <span>涨跌幅</span>
+        <span style="text-align: center;">最新价</span>
+        <span style="text-align: right;">涨跌幅</span>
       </div>
       <div class="list">
-        <div>
+        <div style="display: flex;">
           <span>BTC</span>
           <p>/USDT</p>
         </div>
-        <div><span>34216.16</span></div>
-        <div>
-          <button>+15.35%</button>
+        <div style="text-align: center;"><span>34216.16</span></div>
+        <div style="text-align: right;">
+          <button class="up">+15.35%</button>
         </div>
       </div>
     </div>
@@ -191,6 +238,37 @@
       margin: 20px 0px;
       border-left: 5px solid #30e3ca;
       padding-left: 10px;
+    }
+    .title{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      span{
+        width: 33%;
+      }
+    }
+    .list{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      padding: 10px 0px ;
+      div{
+        width: 33%;
+        button{
+          width: 70px;
+          height: 30px;
+          border: 0;
+          border-radius: 2px;
+        }
+        .up{
+          background: #11999e;
+        }
+        .down{
+          background: #e23e57;
+        }
+      }
     }
   }
 }
