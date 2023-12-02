@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter()
 
 const value = ref(1);
 
@@ -34,6 +36,10 @@ const sell = () => {
   active.value = "sell";
   active_btn.value = "卖出开空";
 };
+
+const goAll = () =>{
+  router.push("/all")
+}
 </script>
 
 <template>
@@ -99,7 +105,7 @@ const sell = () => {
     <div class="position">
       <div class="top">
         <span style="font-weight: 600;font-size: 15px;">当前持仓</span>
-        <div>
+        <div @click="goAll">
           <span class="material-symbols-outlined"> segment </span>
           <span>全部</span>
         </div>

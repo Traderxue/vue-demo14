@@ -74,6 +74,10 @@ const router = createRouter({
     {
       path:"/transfer",
       component:()=>import("@/views/transfer/transfer.vue")
+    },
+    {
+      path:"/all",
+      component:()=>import("@/views/all/all.vue")
     }
 
   ]
