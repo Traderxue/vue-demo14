@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import { getPrice } from "@/api/okx.js";
 
 const dataList = ref([
   {
@@ -57,14 +58,26 @@ const dataList = ref([
     up: 1,
   },
 ]);
+
+const getPrices = () => {
+  dataList.value.forEach(async (item) => {
+    const { data: res } = await getPrice(item.type);
+    item.price = res.data[0].markPx;
+    console.log(res);
+  });
+};
+
+onMounted(() => {
+  getPrices();
+});
 </script>
 
 <template>
   <div class="usdt">
     <div class="title">
       <span>交易种类</span>
-      <span style="text-align: center;">价格</span>
-      <span style="text-align: right;">涨跌幅</span>
+      <span style="text-align: center">价格</span>
+      <span style="text-align: right">涨跌幅</span>
     </div>
     <div class="box" v-for="(item, index) in dataList" :key="index">
       <div>
@@ -93,8 +106,8 @@ const dataList = ref([
     justify-content: space-between;
     font-size: 14px;
     margin-bottom: 15px;
-    span{
-        width: 33%;
+    span {
+      width: 33%;
     }
   }
   .box {
@@ -115,9 +128,11 @@ const dataList = ref([
     }
     .up {
       color: #11999e;
+      font-weight: 600;
     }
     .down {
-      color: #e23e57;
+      color: #e84545;
+      font-weight: 600;
     }
     .up_btn {
       background: #11999e;
