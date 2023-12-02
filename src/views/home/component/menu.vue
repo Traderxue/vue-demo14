@@ -1,78 +1,78 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import Clipboard from 'clipboard';
+import Clipboard from "clipboard";
 import { showToast } from "vant";
 
-const router = useRouter()
+const router = useRouter();
 
-const uid = ref(645645)
+const uid = ref("645645");
 
 const list = ref([
-    {
-        title:"身份认证",
-        icon:"verified_user",
-        path:"/security"
-    },
-    {
-        title:"账户中心",
-        icon:"lock",
-        path:"/wallet"
-    },
-    {
-        title:"设置中心",
-        icon:"settings",
-        path:"/setting"
-    },
-    {
-        title:"收款方式",
-        icon:"credit_card",
-        path:"/payment"
-    },
-    {
-        title:"咨询客服",
-        icon:"support_agent",
-        path:""
-    },
-    {
-        title:"帮助中心",
-        icon:"help",
-        path:"/help"
-    },
-    {
-        title:"关于我们",
-        icon:"info",
-        path:"/about"
-    },
-])
+  {
+    title: "身份认证",
+    icon: "verified_user",
+    path: "/security",
+  },
+  {
+    title: "账户中心",
+    icon: "lock",
+    path: "/wallet",
+  },
+  {
+    title: "设置中心",
+    icon: "settings",
+    path: "/setting",
+  },
+  {
+    title: "收款方式",
+    icon: "credit_card",
+    path: "/payment",
+  },
+  {
+    title: "咨询客服",
+    icon: "support_agent",
+    path: "",
+  },
+  {
+    title: "帮助中心",
+    icon: "help",
+    path: "/help",
+  },
+  {
+    title: "关于我们",
+    icon: "info",
+    path: "/about",
+  },
+]);
 
 const copyToClipboard = () => {
-  const clipboard = new Clipboard('.material', {
+  const clipboard = new Clipboard(".material-symbols-outlined", {
     text: () => uid.value,
   });
 
-  clipboard.on('success', (e) => {
-    console.log('复制成功', e);
+  clipboard.on("success", (e) => {
+    console.log("复制成功", e);
     clipboard.destroy(); // 清理内存
     showToast("复制成功");
   });
-}
+};
 
-const topup = ()=>{
-  router.push("/topup")
-}
+const topup = () => {
+  router.push("/topup");
+};
 
-const widthdraw = () =>{
-  router.push("/widthdraw")
-}
+const widthdraw = () => {
+  router.push("/widthdraw");
+};
 
-const transfer = ()=>{
-  router.push("/transfer")
-}
+const transfer = () => {
+  router.push("/transfer");
+};
 
-const goTab = (item) =>{
-  router.push(item.path)
-}
+const goTab = (item) => {
+  router.push(item.path);
+};
 </script>
 
 <template>
@@ -80,8 +80,12 @@ const goTab = (item) =>{
     <div class="header">
       <h3>FTTX</h3>
       <div>
-        <span>UID: {{uid}}</span
-        ><span class="material-symbols-outlined material" style="margin-left: 5px;cursor: pointer;" @click="copyToClipboard">
+        <span>UID: {{ uid }}</span>
+        <span
+          class="material-symbols-outlined"
+          style="margin-left: 5px; cursor: pointer"
+          @click="copyToClipboard"
+        >
           file_copy
         </span>
       </div>
@@ -101,9 +105,11 @@ const goTab = (item) =>{
       </div>
     </div>
     <div class="list">
-      <div v-for="(item,index) in list" :key="index" @click="goTab(item)">
-        <span class="material-symbols-outlined" style="font-size: 22px;"> {{item.icon}} </span>
-        <span>{{item.title}}</span>
+      <div v-for="(item, index) in list" :key="index" @click="goTab(item)">
+        <span class="material-symbols-outlined" style="font-size: 22px">
+          {{ item.icon }}
+        </span>
+        <span>{{ item.title }}</span>
       </div>
     </div>
   </div>
@@ -147,19 +153,19 @@ const goTab = (item) =>{
       }
     }
   }
-  .list{
+  .list {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     margin-top: 25px;
-    div{
-        display: flex;
-        align-items: center;
-        margin: 10px 0px;
-        padding: 5px 0px;
-        span{
-            padding-right: 10px;
-        }
+    div {
+      display: flex;
+      align-items: center;
+      margin: 10px 0px;
+      padding: 5px 0px;
+      span {
+        padding-right: 10px;
+      }
     }
   }
 }
