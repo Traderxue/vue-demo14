@@ -33,12 +33,12 @@ const list = ref([
     {
         title:"帮助中心",
         icon:"help",
-        path:""
+        path:"/help"
     },
     {
         title:"关于我们",
         icon:"info",
-        path:""
+        path:"/about"
     },
 ])
 
