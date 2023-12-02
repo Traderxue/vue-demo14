@@ -30,7 +30,7 @@ const goBack = () => {
     <div class="box">
       <h3>专业的团队</h3>
       <p>
-    我们拥有一支专业、富有经验的团队，致力于为客户提供最新的市场分析、投资建议和财务规划。我们的团队精通股票市场的方方面面，始终紧跟市场脉搏，以确保我们的客户始终站在投资的前沿。 
+        我们拥有一支专业、富有经验的团队，致力于为客户提供最新的市场分析、投资建议和财务规划。我们的团队精通股票市场的方方面面，始终紧跟市场脉搏，以确保我们的客户始终站在投资的前沿。
       </p>
     </div>
   </div>
@@ -42,7 +42,7 @@ const goBack = () => {
   height: auto;
   padding: 15px;
   font-size: 15px;
-  color: #FFF;
+  color: #fff;
   .header {
     width: auto;
     height: auto;
@@ -50,15 +50,15 @@ const goBack = () => {
     justify-content: space-between;
     align-items: center;
   }
-  .box{
+  .box {
     width: auto;
     height: auto;
     margin: 20px 0px;
-    h3{
-        padding: 5px 0px;
+    h3 {
+      padding: 5px 0px;
     }
-    p{
-        padding: 2px 0px;
+    p {
+      padding: 2px 0px;
     }
   }
 }

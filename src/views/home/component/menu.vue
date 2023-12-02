@@ -23,7 +23,7 @@ const list = ref([
     {
         title:"收款方式",
         icon:"credit_card",
-        path:""
+        path:"/payment"
     },
     {
         title:"咨询客服",
