@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import Clipboard from 'clipboard';
+import { showToast } from "vant";
 
 const router = useRouter()
+
+const uid = ref(645645)
 
 const list = ref([
     {
@@ -42,12 +46,28 @@ const list = ref([
     },
 ])
 
+const copyToClipboard = () => {
+  const clipboard = new Clipboard('.material', {
+    text: () => uid.value,
+  });
+
+  clipboard.on('success', (e) => {
+    console.log('复制成功', e);
+    clipboard.destroy(); // 清理内存
+    showToast("复制成功");
+  });
+}
+
 const topup = ()=>{
   router.push("/topup")
 }
 
 const widthdraw = () =>{
   router.push("/widthdraw")
+}
+
+const transfer = ()=>{
+  router.push("/transfer")
 }
 
 const goTab = (item) =>{
@@ -60,8 +80,8 @@ const goTab = (item) =>{
     <div class="header">
       <h3>FTTX</h3>
       <div>
-        <span>UID: 531034</span
-        ><span class="material-symbols-outlined" style="margin-left: 5px">
+        <span>UID: {{uid}}</span
+        ><span class="material-symbols-outlined material" style="margin-left: 5px;cursor: pointer;" @click="copyToClipboard">
           file_copy
         </span>
       </div>
@@ -75,7 +95,7 @@ const goTab = (item) =>{
         <img src="http://localhost:5173/tx.png" alt="" />
         <span>提现</span>
       </div>
-      <div>
+      <div @click="transfer">
         <img src="http://localhost:5173/zz.png" alt="" />
         <span>转账</span>
       </div>

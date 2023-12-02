@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
 
 const coinList = ref([
     {
@@ -33,6 +36,18 @@ const coinList = ref([
         fold:"0.000"
     },
 ])
+
+const topup = () =>{
+  router.push("/topup")
+}
+
+const withdraw = () =>{
+  router.push("/widthdraw")
+}
+
+const transfer = () =>{
+  router.push("/transfer")
+}
 </script>
 
 <template>
@@ -54,15 +69,15 @@ const coinList = ref([
       </div>
     </div>
     <div class="banner">
-      <div>
+      <div @click="topup">
         <img src="http://localhost:5173/cz.png" alt="" />
         <span>充值</span>
       </div>
-      <div>
+      <div @click="withdraw">
         <img src="http://localhost:5173/tx.png" alt="" />
         <span>提现</span>
       </div>
-      <div>
+      <div @click="transfer">
         <img src="http://localhost:5173/zz.png" alt="" />
         <span>转账</span>
       </div>

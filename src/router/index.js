@@ -70,6 +70,10 @@ const router = createRouter({
     {
       path:"/widthdraw",
       component:()=>import("@/views/withdraw/withdraw.vue")
+    },
+    {
+      path:"/transfer",
+      component:()=>import("@/views/transfer/transfer.vue")
     }
 
   ]
