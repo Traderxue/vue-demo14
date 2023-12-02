@@ -42,6 +42,14 @@ const list = ref([
     },
 ])
 
+const topup = ()=>{
+  router.push("/topup")
+}
+
+const widthdraw = () =>{
+  router.push("/widthdraw")
+}
+
 const goTab = (item) =>{
   router.push(item.path)
 }
@@ -59,11 +67,11 @@ const goTab = (item) =>{
       </div>
     </div>
     <div class="banner">
-      <div>
+      <div @click="topup">
         <img src="http://localhost:5173/cz.png" alt="" />
         <span>充值</span>
       </div>
-      <div>
+      <div @click="widthdraw">
         <img src="http://localhost:5173/tx.png" alt="" />
         <span>提现</span>
       </div>

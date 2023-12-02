@@ -62,6 +62,14 @@ const router = createRouter({
     {
       path:"/payment",
       component:()=>import("@/views/payment/payment.vue")
+    },
+    {
+      path:"/topup",
+      component:()=>import("@/views/topup/topup.vue")
+    },
+    {
+      path:"/widthdraw",
+      component:()=>import("@/views/withdraw/withdraw.vue")
     }
 
   ]
